@@ -32,6 +32,9 @@ WORKDIR /var/www/html
 COPY docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
+# PHP configuration overrides (upload limits, etc.)
+COPY docker/php/99-upload.ini /usr/local/etc/php/conf.d/99-upload.ini
+
 # ImageMagick policy: allow PDF decoding via Ghostscript (required for PDF thumbnails)
 COPY docker/php/imagemagick-policy.xml /tmp/imagemagick-policy.xml
 RUN mkdir -p /etc/ImageMagick-6 /etc/ImageMagick-7 \
