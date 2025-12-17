@@ -1,0 +1,9 @@
+.git
+.DS_Store
+
+# Laravel app will be bind-mounted; keep image builds clean
+src/vendor
+src/node_modules
+src/storage/logs
+
+

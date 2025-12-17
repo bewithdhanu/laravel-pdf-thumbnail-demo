@@ -1,0 +1,31 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: thumbnail-laravel-app
+    working_dir: /var/www/html
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "8000:8000"
+    environment:
+      COMPOSER_ALLOW_SUPERUSER: "1"
+      APP_ENV: local
+      APP_DEBUG: "true"
+      # Disable all DB-backed drivers by default (no DB service is included).
+      DB_CONNECTION: none
+      DB_HOST: ""
+      DB_PORT: ""
+      DB_DATABASE: ""
+      DB_USERNAME: ""
+      DB_PASSWORD: ""
+      CACHE_STORE: file
+      SESSION_DRIVER: file
+      QUEUE_CONNECTION: sync
+    # Use PHP's built-in server directly (instead of `php artisan serve`), so
+    # our docker-compose environment variables aren't filtered out by Laravel's
+    # ServeCommand reloader process.
+    command: ["php", "-S", "0.0.0.0:8000", "-t", "public", "server.php"]
+
+

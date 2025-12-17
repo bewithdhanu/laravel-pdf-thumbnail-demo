@@ -1,0 +1,33 @@
+.DS_Store
+.idea/
+.vscode/
+
+# Docker / local overrides
+.env
+.env.*
+
+# Laravel (project lives in ./src)
+src/.env
+src/.env.*
+src/vendor/
+src/node_modules/
+
+# Public storage symlink + hot reload markers
+src/public/storage
+src/public/hot
+
+# Runtime caches / logs
+src/storage/*.key
+src/storage/logs/
+src/storage/framework/cache/
+src/storage/framework/sessions/
+src/storage/framework/views/
+
+# Generated thumbnails (package outputs to storage/app/public/thumbnail)
+src/storage/app/public/thumbnail/
+src/storage/app/public/temp_thumbnail/
+
+# SQLite database file (we’re running DB-less)
+src/database/*.sqlite
+
+
